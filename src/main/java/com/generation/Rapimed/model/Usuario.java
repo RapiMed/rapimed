@@ -12,6 +12,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
@@ -25,10 +26,11 @@ public class Usuario {
 	
 	@Size(min = 3,max = 50 ,message = "O nome deve ter no mínimo 3 e no máximo 50 caracteres")
 	@NotBlank(message = "O nome é obrigatório")
-	private String nomeUsuario;
+	private String nome;
 	
 	@NotBlank(message = "O email é obrigatório")
-	private String email;
+	@Email(message = "O email deve ser um email valido!")
+	private String usuario;
 	
 	@Size(min = 8,message = "A senha deve ter no mínimo 8 caracteres")
 	@NotBlank(message = "A senha é obrigatória")
@@ -49,20 +51,20 @@ public class Usuario {
 		this.id = id;
 	}
 
-	public String getNomeUsuario() {
-		return nomeUsuario;
+	public String getNome() {
+		return nome;
 	}
 
-	public void setNomeUsuario(String nomeUsuario) {
-		this.nomeUsuario = nomeUsuario;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
-	public String getEmail() {
-		return email;
+	public String getUsuario() {
+		return usuario;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
 	}
 
 	public String getSenha() {
@@ -88,6 +90,7 @@ public class Usuario {
 	public void setProduto(List<Produto> produto) {
 		this.produto = produto;
 	}
+
 	
 	
 	
